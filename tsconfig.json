@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "target": "es5",
+        "module": "commonJs", // 组织代码方式
+        "sourceMap": true,
+        "allowJs": true,
+        "jsx": "react",
+        "removeComments": true, // 编译 js 的时候，删除掉注释
+        //"typeRoots": [], // 默认所有可见的"@types"包会在编译过程中被包含进来
+        //"types": ["node", "lodash"], // 只有被列出来的包才会被包含进来
+        "baseUrl": ".",
+        "paths": {
+            "components/*": ["src/components/*"]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "dist",
+        "webpack",
+        "jest",
+        "enzyme",
+        "**/*.test.ts",
+        "**/*.test.tsx"
+    ],
+    "include": [
+        "./src/**/*"
+    ]
+}
