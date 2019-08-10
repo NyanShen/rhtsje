@@ -1,5 +1,6 @@
 import * as React from "react";
 import {useState} from "react";
+import "./index.scss";
 
 const Header = () => {
     const [value, setValue] = useState("");

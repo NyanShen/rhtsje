@@ -1,0 +1,11 @@
+.header {
+  line-height: 80px;
+  background-color: $color-background;
+
+  .header-content {
+    width: 1000px;
+    margin: auto 0;
+    font-size: $font-size-24;
+    color: $color-white;
+  }
+}
