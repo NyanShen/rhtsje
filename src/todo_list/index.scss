@@ -3,9 +3,18 @@
   background-color: $color-background;
 
   .header-content {
-    width: 1000px;
-    margin: auto 0;
+    width: 600px;
+    margin: 0 auto;
     font-size: $font-size-24;
     color: $color-white;
+
+    .header-input {
+      float: right;
+      width: 360px;
+      margin-top: 24px;
+      line-height: 30px;
+      font-size: $font-size-16;
+      border-radius: 3px;
+    }
   }
 }

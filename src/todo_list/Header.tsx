@@ -16,6 +16,7 @@ const Header = () => {
                 TodoList
                 <input 
                 value={value}
+                className="header-input"
                 data-testid="header_input"
                 onChange={handleInputChange}
                 onKeyUp={handleKeyup}
