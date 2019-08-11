@@ -17,6 +17,11 @@ describe("test Header component", () => {
         expect(getByText(title)).toBeInTheDocument();
     })
 
+    it("should contain a input element", () => {
+        const {getByTestId} = wrapper;
+        expect(getByTestId("header_input")).toBeInTheDocument();
+    })
+
     it("input initial value should be empty", () => { 
         const {getByTestId} = wrapper;
         expect(getByTestId("header_input").value).toEqual("");

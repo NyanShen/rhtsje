@@ -25,6 +25,6 @@
         "**/*.test.tsx"
     ],
     "include": [
-        "./src/**/*", "config/setup-test.js"
+        "./src/**/*"
     ]
 }
