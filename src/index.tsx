@@ -1,11 +1,12 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
-import Header from "./todo_list/Header";
+
+import TodoList from "./todo_list/TodoList";
 import "./styles/main.scss";
 
 const App = () => {
     return (
-        <Header />
+        <TodoList />
     )
 }
 
