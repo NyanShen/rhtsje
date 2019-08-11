@@ -2,13 +2,16 @@ import * as React from "react";
 import {useState} from "react";
 import "./index.scss";
 
-const Header = () => {
+const Header = (props: any) => {
     const [value, setValue] = useState("");
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
     }
     const handleKeyup = (event: React.FormEvent<HTMLInputElement>) => {
-
+        if (value) {
+            props.addUndoItem(value)
+            setValue("");
+        }
     }
     return (
         <div className="header">

@@ -12,7 +12,11 @@ module.exports = {
         "json",
         "node"
     ],
-
+    globals: {
+        'ts-jest': {
+          diagnostics: false
+        }
+    },
     testPathIgnorePatterns: ['/node_modules/'],
     // setup enzyme
     snapshotSerializers: ["enzyme-to-json/serializer"],
