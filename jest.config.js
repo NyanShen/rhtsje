@@ -13,11 +13,11 @@ module.exports = {
         "node"
     ],
     globals: {
-        'ts-jest': {
+        "ts-jest": {
           diagnostics: false
         }
     },
-    testPathIgnorePatterns: ['/node_modules/'],
+    testPathIgnorePatterns: ["/node_modules/"],
     // setup enzyme
     snapshotSerializers: ["enzyme-to-json/serializer"],
     // jest-enzyme 环境配置有问题，暂时用不了。
