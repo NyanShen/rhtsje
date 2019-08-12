@@ -2,13 +2,17 @@ import * as React from "react";
 import {useState} from "react";
 import "./index.scss";
 
+interface IProps {
+    addUndoItem?: (value: string) => void;
+}
+
 const Header = (props: any) => {
     const [value, setValue] = useState("");
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
     }
-    const handleKeyup = (event: React.FormEvent<HTMLInputElement>) => {
-        if (value) {
+    const handleKeyup = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.keyCode === 13 && value) {
             props.addUndoItem(value)
             setValue("");
         }

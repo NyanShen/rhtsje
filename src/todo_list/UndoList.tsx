@@ -1,11 +1,8 @@
 import * as React from "react";
-interface todoItem {
-    status: string;
-    value: string;
-}
+import {ITodoItem} from "./model";
 
 interface IUndoListProps {
-    list: Array<todoItem>;
+    list: Array<ITodoItem>;
     deleteItem?: (index: number) => void;
     changeStatus?: (index: number) => void;
     handleBlur?: (index: number) => void;
@@ -22,7 +19,7 @@ const UndoList = (props: IUndoListProps) => {
             </div>
             <ul className="undo-list-content">
                 {
-                    list.map((item: todoItem, index: number) => {
+                    list.map((item: ITodoItem, index: number) => {
                         return (
                             <li
                                 className="undo-list-item"
