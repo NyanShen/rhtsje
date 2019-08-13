@@ -48,10 +48,10 @@ describe("test Header component", () => {
         it("input value is empty, onKeyUp should have no action", () => {
             const { getByTestId } = wrapper;
             const inputElem = getByTestId("header_input");
-            fireEvent.keyUp(inputElem, {keyCode: 13});
+            fireEvent.keyUp(inputElem, { keyCode: 13 });
             expect(fn).not.toHaveBeenCalled();
 
-        }) 
+        })
 
         it("input value is not empty, addUndoItem function should be called only onKeyup code is 13", () => {
             const { getByTestId } = wrapper;
@@ -67,10 +67,10 @@ describe("test Header component", () => {
             const inputElem = getByTestId("header_input");
             const context = "input some test";
             fireEvent.change(inputElem, { target: { value: context } });
-            fireEvent.keyUp(inputElem, {keyCode: 13});
+            fireEvent.keyUp(inputElem, { keyCode: 13 });
             expect(fn).toHaveBeenCalled();
             expect(fn).toHaveBeenLastCalledWith(context);
             expect(inputElem.value).toEqual("");
-        }) 
+        })
     })
 })
