@@ -3,14 +3,14 @@ import {ITodoItem} from "./model";
 
 interface IUndoListProps {
     list: Array<ITodoItem>;
+    onBlur?: (index: number) => void;
     deleteItem?: (index: number) => void;
-    changeStatus?: (index: number) => void;
-    handleBlur?: (index: number) => void;
-    handleValueChange?: (index: number, value: string) => void;
+    statusChange?: (index: number) => void;
+    valueChange?: (index: number, value: string) => void;
 }
 
 const UndoList = (props: IUndoListProps) => {
-    const { list, deleteItem, changeStatus, handleBlur, handleValueChange } = props;
+    const { list, deleteItem, statusChange, onBlur, valueChange } = props;
     return (
         <div className="undo-list">
             <div className="undo-list-title">
@@ -25,15 +25,15 @@ const UndoList = (props: IUndoListProps) => {
                                 className="undo-list-item"
                                 data-testid="list_item"
                                 key={`${item.value}-${index}`}
-                                onClick={() => changeStatus(index)}
+                                onClick={() => statusChange(index)}
                             >
                                 {item.status === "div" ? item.value : (
                                     <input
                                         value={item.value}
                                         data-testid="undo_list_input"
                                         className="undo-list-input"
-                                        onBlur={() => handleBlur(index)}
-                                        onChange={(e) => handleValueChange(index, e.target.value)}
+                                        onBlur={() => onBlur(index)}
+                                        onChange={(e) => valueChange(index, e.target.value)}
                                     />
                                 )}
                                 <span
