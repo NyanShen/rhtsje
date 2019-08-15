@@ -4,21 +4,24 @@ import axios from "axios";
 import Header from "./Header";
 import UndoList from "./UndoList";
 import { ITodoItem } from "./model";
+import DoneList from "./DoneList";
 
 const initialTodoList = [];
+const initialDoneList = [];
 
 const TodoList = () => {
     const [todoList, setTodoList] = useState<ITodoItem[]>(initialTodoList);
+    const [doneList, setDoneList] = useState<ITodoItem[]>(initialDoneList);
 
-    useEffect(() => {
-        axios.get("/undolist.json")
-            .then((res: any) => {
-                setTodoList(res.data);
-            })
-            .catch(() => {
-                console.log("error test")
-            });
-    }, [])
+    // useEffect(() => {
+    //     axios.get("/undolist.json")
+    //         .then((res: any) => {
+    //             setTodoList(res.data);
+    //         })
+    //         .catch(() => {
+    //             console.log("error test")
+    //         });
+    // }, [])
 
     const addUndoItem = (value: string) => {
         setTodoList([
@@ -80,6 +83,22 @@ const TodoList = () => {
         setTodoList(newTodoList);
     }
 
+    const handleAddDoneItem = (index: number, item: ITodoItem) => {
+        setDoneList([
+            ...doneList,
+            item
+        ]);
+        handleDeleteItem(index);
+    }
+    const handleRemoveDoneList = (index: number, item: ITodoItem) => {
+        setTodoList([
+            ...todoList,
+            item
+        ])
+        doneList.splice(index, 1);
+        setDoneList([...doneList]);
+    }
+
     return (
         <>
             <Header addUndoItem={addUndoItem} />
@@ -89,7 +108,9 @@ const TodoList = () => {
                 statusChange={handleStatusChange}
                 valueChange={handleValueChange}
                 onBlur={handleBlur}
+                addDoneItem={handleAddDoneItem}
             />
+            <DoneList list={doneList} removeDoneItem={handleRemoveDoneList}/>
         </>
     )
 }
