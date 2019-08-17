@@ -16,7 +16,7 @@ const UndoList = (props: IUndoListProps) => {
         <div className="undo-list">
             <div className="undo-list-title">
                 doing
-                <span className="undo-list-count" data-testid="list_count">{list.length}</span>
+                <span className="undo-list-count" data-testid="undo_list_count">{list.length}</span>
             </div>
             <ul className="undo-list-content">
                 {
