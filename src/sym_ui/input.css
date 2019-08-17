@@ -30,6 +30,7 @@
     font-size: .8rem;
     border:none;
 }
+/* 清空按钮 */
 .sym-form-item > .sym-form-body > .sym-input-reset{
     position: absolute;
     width: .8rem; /* 20 x 0.8 = 16px */
@@ -43,4 +44,68 @@
     color: #fff;
     border-radius: 50%;
     text-align: center;
+}
+/* 警告提示按钮 */
+/* 表单中的错误提示按钮 */
+.sym-form-item > .sym-form-body > .sym-input-warning{
+    position: absolute;
+    width: .8rem;
+    height: .8rem;
+    line-height: .8rem;
+    top: 50%;
+    margin-top: -.4rem;
+    right: 1rem;
+    font-size: .6rem;
+    border-radius: 50%;
+    color: red;
+    border: 1px solid red;
+    text-align: center;
+}
+
+/* 自定义单选 */
+.sym-form-item > .sym-radio{
+    flex: 1;
+    font-size: .8rem;
+    line-height: 2rem;
+}
+/* 未选中状态的图标 */
+.sym-form-item > .sym-radio > .sym-radio-icon{
+    margin-right: .5rem;
+    color: #09BB07;
+    visibility: hidden;
+}
+/* 选中状态的图标 */
+.sym-form-item > .sym-radio.checked > .sym-radio-icon{
+    visibility: visible;
+}
+/* 隐藏的radio类型的input
+.sym-form-item > .sym-radio > .sym-radio-input{
+    position: absolute;
+    left: -999rem;
+}
+*/
+
+/* 自定义多选 */
+.sym-form-item > .sym-check{
+    flex: 1;
+    font-size: .8rem;
+    line-height: 2rem;
+}
+/* 未选中时的图标 */
+.sym-form-item > .sym-check > .sym-check-icon{
+    margin-right: .5rem;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    color: rgba(0,0,0,0);
+    font-size: .6rem;
+    width: .8rem;
+    height: .8rem;
+    line-height: .8rem;
+    text-align: center;
+}
+/* 选中时的图标 */
+.sym-form-item > .sym-check.checked > .sym-check-icon{
+    background: #09BB07;
+    color: #fff;
+    border-color: rgba(0,0,0,0)
 }
