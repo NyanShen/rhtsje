@@ -1,0 +1,111 @@
+/* 搜索框 */
+.sym-search {
+  max-width: 640px;
+  margin: 0 auto;
+  background: #f8f8f8;
+}
+/* 搜索状态中，覆盖内容区 */
+.sym-search.on-focus {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+/* 处理有标题栏的情况 */
+.sym-header ~ .sym-content .sym-search.on-focus {
+  top: 2.3rem;
+}
+/* 处理有导航栏的情况 */
+.sym-navbar ~ .sym-content .sym-search.on-focus {
+  bottom: 2.5rem;
+}
+
+/* 搜索栏中的表单 */
+.sym-search > .sym-search-form {
+  display: flex;
+  height: 2.3rem;
+  align-items: center;
+}
+/* 输入框的容器 */
+.sym-search > .sym-search-form > .sym-search-input-wrap{
+    flex: 1;
+    position: relative;
+    padding: 0 .5rem;
+}
+/* 取消按钮 */
+.sym-search > .sym-search-form > .sym-search-cancel{
+    flex: 0 0 2.2rem;
+    padding-right: .5rem;
+    text-align: center;
+    font-size: .7rem;
+    display: none;
+}
+/* 对取消按钮的控制 */
+.sym-search.on-focus > .sym-search-form > .sym-search-cancel{
+    display: block;
+}
+/* 搜索图标 */
+.sym-search .sym-search-icon{
+    position: absolute;
+    height: .8rem;
+    line-height: .8rem;
+    font-size: .7rem;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    color: #ccc;
+}
+/* 输入框的样式 */
+.sym-search .sym-search-input{
+    box-sizing: border-box;
+    width: 100%;
+    height: 1.6rem;
+    border: none;
+    font-size: .8rem;
+    padding-left: 1.5rem;
+    background: #fff;
+    border-radius: .2rem;
+}
+
+/* 清空按钮的样式 */
+.sym-search .sym-search-clear{
+    position: absolute;
+    height: .8rem;
+    line-height: .8rem;
+    width: .8rem;
+    font-size: .6rem;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    right: 1rem;
+    border-radius: 50%;
+    color: #fff;
+    background: #ccc;
+    display: none;
+    text-align: center;
+}
+/* 对清空按钮的控制 */
+.sym-search.on-focus .sym-search-input:valid + .sym-search-clear{
+    display: block;
+}
+/* 搜索建议 */
+.sym-search > .sym-search-suggest{
+    display: none;
+}
+.sym-search.on-focus > .sym-search-suggest{
+    display: block;
+}
+
+/* 搜索建议的内容 */
+.sym-search > .sym-search-suggest > .sym-suggest-item{
+    padding-left: 1rem;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: .8rem;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
