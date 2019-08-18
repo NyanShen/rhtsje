@@ -29,3 +29,5 @@
 @import './loading.css';
 /* toastr提示工具 */
 @import './toastr.css';
+/* 文本组件 */
+@import './article.css';
