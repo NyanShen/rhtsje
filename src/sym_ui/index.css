@@ -27,3 +27,5 @@
 @import './modal.css';
 /* 加载样式 */
 @import './loading.css';
+/* toastr提示工具 */
+@import './toastr.css';
