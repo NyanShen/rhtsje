@@ -31,6 +31,7 @@ const UndoList = (props: IUndoListProps) => {
                                 <input
                                     className="item-done"
                                     type="checkbox"
+                                    data-testid="add_to_done_list"
                                     onClick={(e) => {
                                         e.stopPropagation()
                                         addDoneItem(index, item)

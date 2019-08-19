@@ -36,5 +36,9 @@ describe("TodoList", () => {
         console.log(listInputElem.value) // 很奇怪，已经执行了valuechange方法，到了setTodoList，但是这里的值没有发生改变？
         fireEvent.blur(listInputElem);
         //expect(listItemElem.textContent).toContain("test change")
+        const addDoneListElem = getByTestId("add_to_done_list") as HTMLInputElement;
+        fireEvent.click(addDoneListElem); // 很奇怪，上面为什么是数组，这里的却是对象。。。
+        const doneListItemElem = getByTestId("done_list_item") as HTMLElement;
+        expect(doneListItemElem.childNodes[1].textContent).toContain("test change");
     });
 })

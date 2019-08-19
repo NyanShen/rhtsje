@@ -20,6 +20,7 @@ const DoneList = (props: IDoneListProps) => {
                     list.map((item: ITodoItem, index: number) => {
                         return (
                             <li
+                                data-testid="done_list_item"
                                 className="list-item done-list-item"
                                 key={`${item.value}-${index}`}
                             >
@@ -28,7 +29,7 @@ const DoneList = (props: IDoneListProps) => {
                                     type="checkbox"
                                     checked={item.status === "div"}
                                     onClick={() => removeDoneItem(index, item)}
-                                    onChange={()=>{}}
+                                    onChange={() => { }}
                                 />
                                 {item.value}
                             </li>
