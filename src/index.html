@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    
-    <title>React Hooks Typescript Webpack Jest Enzyme</title>
-  </head>
-  <body>
-    <div id="root"></div>
 
-    <script src="../node_modules/react/umd/react.development.js"></script>
-    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
-  
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+
+  <title>React Hooks Typescript Webpack Jest Enzyme</title>
+  <script>
+    (function (doc, win) {
+      // 创建一个元素，检测是否支持1vw
+      var dummy = doc.createElement("_").style;
+      dummy.width = "1vw";
+      // 如果设置的width不生效说明不支持vw
+      if (dummy.width) {
+        // 设置root fontSize 为1vw
+        doc.documentElement.style.fontSize = "1vw";
+        return;
+      }
+      // 如果不支持，那么就用JavaScript来计算fontSize
+      var docEI = doc.documentElement;
+      var resizeEvt = "orientationchange" in win ? "orientationchange" : "resize";
+      var recalculate = function () {
+        var clientWidth = docEI.clientWidth;
+        if (!clientWidth) {
+          return;
+        }
+        docEI.style.fontSize = clientWidth / 100 + "px"
+      }
+      // 初始化fontSize
+      recalculate();
+      // 添加事件绑定
+      win.addEventListener(resizeEvt, recalculate, false);
+    })(document, window)
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="../node_modules/react/umd/react.development.js"></script>
+  <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+
+</body>
+
 </html>
