@@ -8,7 +8,7 @@ export const toUrlParam = (param: any): string => {
             urlParam = urlParam + `&${key}=${encodeParam(param[key])}`
         }
     }
-    return;
+    return urlParam;
 }
 
 export const transferUrlParam = (urlParam: string) => {
