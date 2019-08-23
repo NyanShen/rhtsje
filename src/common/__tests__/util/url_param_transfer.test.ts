@@ -1,5 +1,5 @@
-import { transferUrlParam, toUrlParam } from "../../util/url-param-transfer";
-import { encodeParam } from "../../util/encript-param";
+import { transferUrlParam, toUrlParam } from "../../util/url_param_transfer";
+import { encodeParam } from "../../util/encript_param";
 
 it("url param '?a=1&b=2&c=3' sholud be {a: '1',b:'2',c:'3'}", () => {
     const mockData = "?a=1&b=2&c=3";

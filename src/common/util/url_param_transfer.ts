@@ -1,4 +1,4 @@
-import { encodeParam } from "./encript-param";
+import { encodeParam } from "./encript_param";
 
 export const toUrlParam = (param: any): string => {
     if (typeof param !== "object") return;

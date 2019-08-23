@@ -1,4 +1,4 @@
-import { getMockDataByUrl } from "../__mocks__/mock-data";
+import { getMockDataByUrl } from "./mock_data";
 
 export default {
     get(url) {
