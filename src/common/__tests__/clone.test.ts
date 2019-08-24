@@ -1,4 +1,4 @@
-import { shallowClone, jsonClone } from "../../util/clone";
+import { shallowClone, jsonClone, deepClone, cloneDeep } from "../util/clone";
 
 it("new object in deep object should be the same", () => {
     const mockData = {
@@ -59,4 +59,48 @@ it("clone complex object like RegExp", () => {
     expect(newObject.c[0]).toBe(1);
     expect(newObject.d[0]).toBe(null);
     expect(mockData.d[0]).toBe(undefined);
+})
+
+it("test clone deep method", () => {
+    const mockData = {
+        a: null,
+        b: [1, 2, 3],
+        c: { d: { e: 4 } },
+        f: new RegExp("^[a-z]", "g"),
+        h: new Array(1)
+    }
+    const newObject: any = cloneDeep(mockData);
+    expect(newObject.c.d).not.toBe(mockData.c.d);
+})
+
+it("test deep clone method", () => {
+    // constructor
+    function person(name) {
+        this.name = name;
+    }
+    const personInstance = new person("test");
+    const mockData = {
+        a: null,
+        b: [1, 2, 3],
+        c: { d: { e: 4 } },
+        f: new RegExp("^[a-z]", "g"),
+        h: new Array(1, 4, 6),
+        i: personInstance,
+        j: person,
+        l: "test",
+        m: new Array(2)
+    }
+    const newObject: any = deepClone(mockData);
+    console.log(newObject)
+    /**
+     * { a: null,
+        b: [ 1, 2, 3 ],
+        c: { d: { e: 4 } },
+        f: /^[a-z]/g,
+        h: [ 1, 4, 6 ],
+        i: person { name: 'test' },
+        j: [Function: person],
+        l: 'test',
+        m: [] }
+     */
 })
