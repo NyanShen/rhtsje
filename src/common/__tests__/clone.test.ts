@@ -88,10 +88,14 @@ it("test deep clone method", () => {
         i: personInstance,
         j: person,
         l: "test",
-        m: new Array(2)
+        //m: new Array(2), // [undefined, undefined] length 2
+        //n: new Set(["hi", 1, "test you"]),
+        //o: new Map([["code", "code value"], ["name", "name value"]])
     }
     const newObject: any = deepClone(mockData);
-    console.log(newObject)
+    expect(newObject).toEqual(mockData);
+    //console.log(mockData.n) // Set { 'hi', 1, 'test you' }
+    //console.log(newObject.n) // Set {}
     /**
      * { a: null,
         b: [ 1, 2, 3 ],

@@ -60,15 +60,22 @@ export const deepClone = oldObject => {
     const _deepClone = oldObject => {
         // 递归直到oldobject为null时，或类型不为“object”时停止。
         if (oldObject === null) return null;
-        if (typeof oldObject !== 'object') return oldObject;
+        if (typeof oldObject !== 'object') return oldObject; // 
 
         let newObject, newProtoType;
 
         if (isType(oldObject, 'Array')) {
-            // 对数组做特殊处理
+            /**
+             * 对数组做特殊处理
+             * 数组里面如果单纯只有多个基本数据类型将在判断是否时object对象时进行return
+             * 比如数组[1,4,6]
+             * forin循环里key为数组下标，进行循环复制，都止步于前面两个return，此时的循环不会进行定义新newObject
+             * new Array(2) [undefined, undefined],下面的forin循环不会对这个Array进行循环，
+             * 所以最后拷贝结果是[]不是[undefined, undefined]
+             */
             newObject = [];
         } else if (isType(oldObject, 'RegExp')) {
-            // 对正则对象做特殊处理
+            // 对正则对象做特殊处理，下面的newObject[key] = 此次返回的newObject
             newObject = new RegExp(oldObject.source, getRegExpFlags(oldObject));
             if (oldObject.lastIndex) newObject.lastIndex = oldObject.lastIndex;
         } else if (isType(oldObject, 'Date')) {
