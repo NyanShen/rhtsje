@@ -11,8 +11,8 @@ module.exports = {
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"],
         alias: {
-            "@assets": path.resolve(__dirname, "src/assets/"),
-            "@components": path.resolve(__dirname, "src/components/")
+            "assets": path.resolve(__dirname, "src/assets/"),
+            "components": path.resolve(__dirname, "src/components/")
         }
     },
     module: {
@@ -68,7 +68,8 @@ module.exports = {
                 use: {
                     loader: "url-loader",
                     options: {
-                        limit: 3 * 1024 //3k, 超过3k不被处理为base64
+                        limit: 3 * 1024, //3k, 超过3k不被处理为base64
+                        name: "assets/[name].[ext]" // background img url use '../asstes/*'
                     }
                 }
             },
@@ -76,7 +77,7 @@ module.exports = {
                 test: /\.(eot|woff|woff2|ttf)$/,
                 loader: "file-loader",
                 query: {
-                    name: "assets/[name].[hash].[ext]"
+                    name: "assets/[name].[ext]"
                 }
             }
         ]
