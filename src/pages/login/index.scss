@@ -1,0 +1,48 @@
+.sym-login-content {
+    width: 400px;
+    margin: 40px auto;
+    text-align: center;
+    border-radius: 2px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.sym-login-inner{
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 0 rgba($color: #000, $alpha: .1);
+
+    .sym-login-form {
+        padding: 0 24px 80px;
+        .sym-input-wrapper {
+            border-bottom: $border;
+            input[type="text"],
+            input[type="password"] {
+                width: 100%;
+                height: 48px;
+                line-height: 48px;
+                font-size: 14px;
+                border: none;
+            }
+        }
+
+        .sym-input-error-mask {
+            visibility: hidden;
+            position: absolute;
+            top: 24px;
+            transform: translateY(-50%);
+            width: 80%;
+            text-align: left;
+            color: $color-error;
+            background-color: $color-white;
+        }
+        .sym-password {
+            position: relative;
+            .sym-btn-password-switch {
+                position: absolute;
+                right: 0;
+                top: 24px;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}

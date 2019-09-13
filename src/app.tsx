@@ -1,23 +1,15 @@
 import * as React from "react";
-import Loadable from "react-loadable";
 import {HashRouter as Router, Route, Switch} from "react-router-dom";
 
-const LoadableLogin = Loadable({
-    loader: () => import('./pages/login'),
-    loading: () => <div>loading...</div>
-});
-
-const LoadableTodoList = Loadable({
-    loader: () => import('./todo_list/TodoList'),
-    loading: () => <div>loading...</div>
-});
+import Login from "./pages/login";
+import TodoList from "./todo_list/TodoList";
 
 const App = () => {
     return (
         <Router>
             <Switch>
-                <Route exact path="/login" component={LoadableLogin}></Route>
-                <Route exact path="/todolist" component={LoadableTodoList}></Route>
+                <Route exact path="/login" component={Login}></Route>
+                <Route exact path="/todolist" component={TodoList}></Route>
             </Switch>
         </Router>
     )
