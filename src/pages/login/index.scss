@@ -13,7 +13,23 @@
 
     .sym-login-form {
         padding: 0 24px 80px;
+        .sym-form-tabs {
+            text-align: left;
+            .sym-form-tab {
+                display: inline-block;
+                height: 60px;
+                line-height: 60px;
+                font-size: 16px;
+                margin-right: 24px;
+                color: $title-color;
+            }
+            .sym-form-tab-active {
+                font-weight: bold;
+                border-bottom: 3px solid $primary-color;
+            }
+        }
         .sym-input-wrapper {
+            margin-top: 24px;
             border-bottom: $border;
             input[type="text"],
             input[type="password"] {
