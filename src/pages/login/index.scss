@@ -42,6 +42,7 @@
         }
 
         .sym-input-error-mask {
+            cursor: text;
             visibility: hidden;
             position: absolute;
             top: 24px;
@@ -50,6 +51,9 @@
             text-align: left;
             color: $color-error;
             background-color: $color-white;
+        }
+        .sym-account {
+            position: relative;
         }
         .sym-password {
             position: relative;
@@ -61,6 +65,27 @@
                 height: 20px;
                 transform: translateY(-50%);
             }
+        }
+        .sym-form-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+
+            .sym-form-option-switch {
+                color: $primary-color-dark;
+            }
+            .sym-form-option-switch:hover {
+                color: $text-color;
+            }
+
+            .sym-form-forget-pass:hover {
+                color: $title-color;
+            }
+        }
+        .sym-btn-submit {
+            width: 100%;
+            height: 36px;
+            margin-top: 30px;
         }
     }
 }

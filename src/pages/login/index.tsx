@@ -44,9 +44,11 @@ const Login = () => {
                             <SVGIcon viewBox="0 0 24 24" name={showPass ? "showPass" : "hiddenPass"} />
                         </button>
                     </div>
-                    <div className="sym-verify-code">
-
+                    <div className="sym-form-options">
+                        <button type="button" className="sym-btn sym-btn-plain sym-form-option-switch">海外手机号登录</button>
+                        <button type="button" className="sym-btn sym-btn-plain sym-form-forget-pass">忘记密码？</button>
                     </div>
+                    <button type="submit" className="sym-btn sym-btn-primary sym-btn-submit">注册/登录</button>
                 </form>
             </div>
         </div>
