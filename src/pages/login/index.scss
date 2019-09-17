@@ -28,9 +28,12 @@
                 border-bottom: 3px solid $primary-color;
             }
         }
-        .sym-input-wrapper {
-            margin-top: 24px;
+        .sym-form-item{
             border-bottom: $border;
+        }
+        .sym-input-wrapper {
+            flex: 1;
+            margin-top: 24px;
             input[type="text"],
             input[type="password"] {
                 width: 100%;
@@ -54,6 +57,11 @@
         }
         .sym-account {
             position: relative;
+            display: flex;
+            .sym-countries-select-wrapper {
+                display: inline-block;
+                margin-top: 24px;
+            }
         }
         .sym-password {
             position: relative;

@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import "./index.scss";
 import SVGIcon from "../../components/svg-icon";
+import CountiesSelectPopover from "../../components/popover/counties_select";
 
 const Login = () => {
     const [loginWay, setloginWay] = useState<String>("pass");
@@ -25,13 +26,16 @@ const Login = () => {
                         <div className={getTabClass("code")} onClick={() => switchLoginWay("pass")}>免密码登录</div>
                         <div className={getTabClass("pass")} onClick={() => switchLoginWay("code")}>密码登录</div>
                     </div>
-                    <div className="sym-account">
+                    <div className="sym-form-item sym-account">
+                        <div className="sym-countries-select-wrapper">
+                            <CountiesSelectPopover />
+                        </div>
                         <div className="sym-input-wrapper">
                             <input type="text" placeholder="手机号或邮箱" />
                         </div>
                         <div className="sym-input-error-mask">请输入手机号或邮箱</div>
                     </div>
-                    <div className="sym-password">
+                    <div className="sym-form-item sym-password">
                         <div className="sym-input-wrapper">
                             <input type={showPass ? "text" : "password"} placeholder="密码" />
                         </div>

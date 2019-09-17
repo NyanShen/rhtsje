@@ -1,0 +1,16 @@
+.sym-popover-select {
+    min-width: 72px;
+    .sym-btn-select {
+        display: flex;
+        align-items: center;
+        
+    }
+    .sym-popover-select-icon {
+        display: inline-flex;
+        align-items: center;
+        height: 48px;
+    }
+}
+.sym-popover-content {
+    position: absolute;
+}
