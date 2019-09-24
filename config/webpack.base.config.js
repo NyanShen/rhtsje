@@ -68,7 +68,7 @@ module.exports = {
                 use: {
                     loader: "url-loader",
                     options: {
-                        limit: 3 * 1024, //3k, 超过3k不被处理为base64
+                        limit: 3 * 1024, //3k, 超过3k不被处理为base64, 交给file-loader处理
                         name: "assets/[name].[ext]" // background img url use '../asstes/*'
                     }
                 }

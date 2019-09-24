@@ -1,99 +1,149 @@
-.sym-login-content {
-    width: 400px;
-    margin: 40px auto;
-    text-align: center;
-    border-radius: 2px;
-    background-color: #fff;
-    box-sizing: border-box;
+.signFlowLoginPage {
+  background-color: #b8e5f8;
+  background-image: url("../../assets/sign_bg.png");
+  background-size: cover;
 }
-.sym-login-inner{
-    position: relative;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px 0 rgba($color: #000, $alpha: .1);
 
-    .sym-login-form {
-        padding: 0 24px 80px;
-        .sym-form-tabs {
-            text-align: left;
-            .sym-form-tab {
-                display: inline-block;
-                height: 60px;
-                line-height: 60px;
-                font-size: 16px;
-                margin-right: 24px;
-                color: $title-color;
-            }
-            .sym-form-tab-active {
-                font-weight: bold;
-                border-bottom: 3px solid $primary-color;
-            }
-        }
-        .sym-form-item{
-            border-bottom: $border;
-        }
-        .sym-input-wrapper {
-            flex: 1;
-            margin-top: 24px;
-            input[type="text"],
-            input[type="password"] {
-                width: 100%;
-                height: 48px;
-                line-height: 48px;
-                font-size: 14px;
-                border: none;
-            }
-        }
+.signFlowLoginPage-content {
+  display: flex;
+  flex: 1 1;
+  min-height: 688px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .signFlowLoginPage-logo {
+    width: 128px;
+    margin-bottom: 24px;
+  }
+}
 
-        .sym-input-error-mask {
-            cursor: text;
-            visibility: hidden;
-            position: absolute;
-            top: 24px;
-            transform: translateY(-50%);
-            width: 80%;
-            text-align: left;
-            color: $color-error;
-            background-color: $color-white;
-        }
-        .sym-account {
-            position: relative;
-            display: flex;
-            .sym-countries-select-wrapper {
-                display: inline-block;
-                margin-top: 24px;
-            }
-        }
-        .sym-password {
-            position: relative;
-            .sym-btn-password-switch {
-                position: absolute;
-                right: 0;
-                top: 24px;
-                width: 24px;
-                height: 20px;
-                transform: translateY(-50%);
-            }
-        }
-        .sym-form-options {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 12px;
+.sym-login-content {
+  width: 400px;
+  text-align: center;
+  border-radius: 2px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.sym-login-inner {
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 rgba($color: #000, $alpha: 0.1);
 
-            .sym-form-option-switch {
-                color: $primary-color-dark;
-            }
-            .sym-form-option-switch:hover {
-                color: $text-color;
-            }
-
-            .sym-form-forget-pass:hover {
-                color: $title-color;
-            }
-        }
-        .sym-btn-submit {
-            width: 100%;
-            height: 36px;
-            margin-top: 30px;
-        }
+  .sym-login-form {
+    padding: 0 24px 80px;
+    .sym-form-tabs {
+      text-align: left;
+      .sym-form-tab {
+        display: inline-block;
+        height: 60px;
+        line-height: 60px;
+        font-size: 16px;
+        margin-right: 24px;
+        color: $title-color;
+      }
+      .sym-form-tab-active {
+        font-weight: bold;
+        border-bottom: 3px solid $primary-color;
+      }
     }
+    .sym-form-item {
+      border-bottom: $border;
+    }
+    .sym-input-wrapper {
+      flex: 1;
+      margin-top: 24px;
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        height: 48px;
+        line-height: 48px;
+        font-size: 14px;
+        border: none;
+      }
+    }
+
+    .sym-input-error-mask {
+      cursor: text;
+      visibility: hidden;
+      position: absolute;
+      top: 24px;
+      transform: translateY(-50%);
+      width: 80%;
+      text-align: left;
+      color: $color-error;
+      background-color: $color-white;
+    }
+    .sym-account {
+      position: relative;
+      display: flex;
+      .sym-countries-select-wrapper {
+        display: inline-block;
+        margin-top: 24px;
+      }
+    }
+    .sym-password {
+      position: relative;
+      .sym-btn-password-switch {
+        position: absolute;
+        right: 0;
+        top: 24px;
+        width: 24px;
+        height: 20px;
+        transform: translateY(-50%);
+      }
+    }
+    .sym-form-options {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+
+      .sym-form-option-switch {
+        color: $primary-color-dark;
+      }
+      .sym-form-option-switch:hover {
+        color: $text-color;
+      }
+
+      .sym-form-forget-pass:hover {
+        color: $title-color;
+      }
+    }
+    .sym-btn-submit {
+      width: 100%;
+      height: 36px;
+      margin-top: 30px;
+    }
+  }
+}
+
+.loginSocial {
+  display: flex;
+  justify-content: space-between;
+  color: #8590a6;
+  width: 400px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  height: 60px;
+  line-height: 60px;
+  padding: 0 24px;
+  margin-top: 24px;
+  font-size: 15px;
+  background-color: #fff;
+  box-sizing: border-box;
+
+  .loginSocial-btnGroup {
+    .loginSocial-btn {
+      display: inline-flex;
+      cursor: pointer;
+      align-items: center;
+      .loginSocial-svg {
+          width: 18px;
+          height: 18px;
+          margin-right: 6px;
+      }
+    }
+    .loginSocial-btn:not(:first-child) {
+      margin-left: 22px;
+    }
+  }
 }
