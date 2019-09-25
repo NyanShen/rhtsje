@@ -1,6 +1,5 @@
 import * as React from "react";
 import SVGIcon from "../../components/svg-icon";
-import "./index.scss";
 
 const LoginSocial = () => {
     return (
@@ -26,7 +25,7 @@ const LoginSocial = () => {
                 <div className="loginSocial-btn">
                 <SVGIcon
                         name="weibo"
-                        fill="#50c8fd"
+                        fill="#fb6622"
                         viewBox="0 0 20 19"
                         className="loginSocial-svg"
                     />

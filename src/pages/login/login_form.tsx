@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import "./index.scss";
+
 import SVGIcon from "../../components/svg-icon";
 import CountiesSelectPopover from "../../components/popover/counties_select";
 
@@ -53,6 +53,17 @@ const LoginForm = () => {
                         <button type="button" className="sym-btn sym-btn-plain sym-form-forget-pass">忘记密码？</button>
                     </div>
                     <button type="submit" className="sym-btn sym-btn-primary sym-btn-submit">注册/登录</button>
+                    <div className="sym-form-tip">
+                        <div>
+                            <div>未注册手机验证后自动登录</div>
+                            <div>
+                                注册即代表同意
+                                <a href="https://www.zhihu.com/terms">《知乎协议》</a>
+                                <a href="https://www.zhihu.com/term/privacy">《隐私保护指引》</a>
+                            </div>
+                        </div>
+                        <a href="https://www.zhihu.com/org/signup">注册机构号</a>
+                    </div>
                 </form>
             </div>
         </div>

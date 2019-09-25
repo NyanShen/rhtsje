@@ -2,6 +2,10 @@
   background-color: #b8e5f8;
   background-image: url("../../assets/sign_bg.png");
   background-size: cover;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  padding-right: 15px;
 }
 
 .signFlowLoginPage-content {
@@ -14,6 +18,22 @@
   .signFlowLoginPage-logo {
     width: 128px;
     margin-bottom: 24px;
+  }
+
+  .signFlowLoginPage-download {
+    border: none;
+    width: 400px;
+    height: 42px;
+    margin-top: 24px;
+    color: #0084ff;
+    svg {
+      margin-right: 10px;
+    }
+  }
+  .signFlowLoginPage-download > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -45,6 +65,22 @@
         font-weight: bold;
         border-bottom: 3px solid $primary-color;
       }
+    }
+    .sym-form-tip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f6f6f6;
+      padding: 12px 24px;
+      color: grey;
+      font-size: 13px;
+    }
+    .sym-form-tip > div {
+      text-align: left;
     }
     .sym-form-item {
       border-bottom: $border;
@@ -137,13 +173,31 @@
       cursor: pointer;
       align-items: center;
       .loginSocial-svg {
-          width: 18px;
-          height: 18px;
-          margin-right: 6px;
+        width: 18px;
+        height: 18px;
+        margin-right: 6px;
       }
     }
     .loginSocial-btn:not(:first-child) {
       margin-left: 22px;
     }
+  }
+}
+
+.signFlowLoginPage-footer {
+  text-align: center;
+  padding: 20px 0;
+  line-height: 21px;
+  color: #fff;
+  text-shadow: 0 1px 2px #999;
+
+  a {
+    color: #fff;
+  }
+  a:not(:last-child)::after,
+  span:not(:last-child)::after {
+    content: " \B7   ";
+    white-space: pre;
+    display: inline-block;
   }
 }

@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import {getSVGPathByName} from "./config";
 import "./index.scss";
+import SVGPath from "./config";
 
 const SVGIcon = ({
     name = "hiddenPass",
@@ -21,13 +21,7 @@ const SVGIcon = ({
             className={`svg-icon ${className || ""}`}
             xmlnsXlink="http://www.w3.org/1999/xlink"
         >
-            <g>
-                <path
-                    fill={fill}
-                    fillRule="evenodd"
-                    d={getSVGPathByName(name)}
-                />
-            </g>
+            <SVGPath fill={fill} name={name} />
         </svg>
     )
 export default SVGIcon;
