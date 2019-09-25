@@ -117,6 +117,13 @@
         display: inline-block;
         margin-top: 24px;
       }
+      .sym-account-seprator {
+        width: 1px;
+        height: 22px;
+        background-color: #ebebeb;
+        margin: 24px 14px 0;
+        transform: translateY(11px);
+      }
     }
     .sym-password {
       position: relative;

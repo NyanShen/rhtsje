@@ -30,6 +30,7 @@ const LoginForm = () => {
                         <div className="sym-countries-select-wrapper">
                             <CountiesSelectPopover />
                         </div>
+                        <span className="sym-account-seprator">&nbsp;</span>
                         <div className="sym-input-wrapper">
                             <input type="text" placeholder="手机号或邮箱" />
                         </div>
