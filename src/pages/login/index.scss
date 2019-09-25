@@ -11,10 +11,11 @@
 .signFlowLoginPage-content {
   display: flex;
   flex: 1 1;
-  min-height: 688px;
+  min-height: 800px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: calc(100% - 42px);
   .signFlowLoginPage-logo {
     width: 128px;
     margin-bottom: 24px;
@@ -193,6 +194,11 @@
 
   a {
     color: #fff;
+    img {
+      position: relative;
+      top: 4px;
+      margin-right: 2px;
+    }
   }
   a:not(:last-child)::after,
   span:not(:last-child)::after {
