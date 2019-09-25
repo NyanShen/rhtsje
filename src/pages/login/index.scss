@@ -135,6 +135,14 @@
         height: 20px;
         transform: translateY(-50%);
       }
+      .sym-btn-sms-input {
+        position: absolute;
+        right: 0;
+        top: 24px;
+        padding: 4px 0;
+        color: #175199;
+        transform: translateY(-50%);
+      }
     }
     .sym-form-options {
       display: flex;
