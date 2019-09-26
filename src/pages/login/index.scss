@@ -44,6 +44,10 @@
   border-radius: 2px;
   background-color: #fff;
   box-sizing: border-box;
+  input:-webkit-autofill {
+    // 浏览器自动填充样式覆盖˝
+    box-shadow: 0 0 0 30px #fff inset;
+  }
 }
 .sym-login-inner {
   position: relative;
@@ -84,6 +88,7 @@
       text-align: left;
     }
     .sym-form-item {
+      position: relative;
       border-bottom: $border;
     }
     .sym-input-wrapper {
@@ -96,6 +101,7 @@
         line-height: 48px;
         font-size: 14px;
         border: none;
+        background: transparent;
       }
     }
 
@@ -104,15 +110,26 @@
       visibility: hidden;
       position: absolute;
       top: 24px;
+      font-size: 14px;
       transform: translateY(-50%);
       width: 80%;
+      line-height: 48px;
       text-align: left;
       color: $color-error;
       background-color: $color-white;
+      &.error-account {
+        top: 48px;
+      }
+      &.error-mobile {
+        left: 110px;
+      }
+      &.error-show {
+        visibility: visible;
+      }
     }
     .sym-account {
-      position: relative;
       display: flex;
+      overflow: hidden;
       .sym-countries-select-wrapper {
         display: inline-block;
         margin-top: 24px;
@@ -126,7 +143,6 @@
       }
     }
     .sym-password {
-      position: relative;
       .sym-btn-password-switch {
         position: absolute;
         right: 0;
