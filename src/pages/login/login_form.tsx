@@ -64,26 +64,22 @@ const LoginForm = () => {
     }
 
     const getTabClass = (way: String) => {
-        let basicClass = "sym-form-tab";
-        return loginWay === way ? basicClass : `${basicClass} sym-form-tab-active`
+        return loginWay === way ? "sym-form-tab" : `sym-form-tab sym-form-tab-active`
     }
 
     const getErrorClass = (name: string) => {
         let basicClass = "sym-input-error-mask";
-        let requiredErrorClass = "";
+        let requiredErrorClass = validation[`${name}Required`] && "error-show";;
         switch (name) {
             case "mobile":
                 basicClass = `${basicClass} error-account error-mobile`;
-                requiredErrorClass = validation.mobileRequired && "error-show";
                 return `${basicClass} ${requiredErrorClass}`;
             case "account":
-                basicClass = "sym-input-error-mask error-account";
+                basicClass = `${basicClass} error-account`;
                 const mobileClass = showElement.showMobile && "error-mobile";
-                requiredErrorClass = validation.accountRequired && "error-show";
                 return `${basicClass} ${mobileClass} ${requiredErrorClass}`;
             case "password":
             case "verifyCode":
-                requiredErrorClass = validation[`${name}Required`] && "error-show";
                 return `${basicClass} ${requiredErrorClass}`;
             default:
                 return basicClass;
@@ -94,20 +90,11 @@ const LoginForm = () => {
         return showElement.showSMS ? "短信" : "语音";
     }
 
-    const getInputType = (name: string) => {
-        let type = "text";
-        if (name === "password") {
-            return showElement.showPass ? type : name;
-        } else {
-            return type;
-        }
-    }
-
     const renderInputElement = (name: string, placeholder: string) => {
         return (
             <div className="sym-input-wrapper">
                 <input
-                    type={getInputType(name)}
+                    type={name === "password" ? (showElement.showPass ? "text" : name) : "text"}
                     name={name}
                     placeholder={placeholder}
                     ref={LoginRefs[`${name}Ref`]}
