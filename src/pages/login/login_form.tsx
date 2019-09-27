@@ -94,11 +94,20 @@ const LoginForm = () => {
         return showElement.showSMS ? "短信" : "语音";
     }
 
+    const getInputType = (name: string) => {
+        let type = "text";
+        if (name === "password") {
+            return showElement.showPass ? type : name;
+        } else {
+            return type;
+        }
+    }
+
     const renderInputElement = (name: string, placeholder: string) => {
         return (
             <div className="sym-input-wrapper">
                 <input
-                    type="text"
+                    type={getInputType(name)}
                     name={name}
                     placeholder={placeholder}
                     ref={LoginRefs[`${name}Ref`]}
