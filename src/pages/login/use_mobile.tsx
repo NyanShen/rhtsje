@@ -103,6 +103,7 @@ const useMobile = (loginWay: String) => {
                         name="verifyCode"
                         placeholder={`输入 6 位${getShowText()}验证码`}
                         ref={verifyCodeRef}
+                        value={loginData.verifyCode}
                         onChange={onInputChange}
                         onBlur={() => onInputBlur("verifyCode")}
                     />
