@@ -8,9 +8,9 @@ export interface ILoginData {
 export interface ILoginValidation {
     mobilePattern?: boolean;
     mobileRequired?: boolean;
-    accountPattern?: boolean;
     accountRequired?: boolean;
     verifyCodeRequired?: boolean;
+    passwordRequired?: boolean;
 }
 
 export interface IShowElement {

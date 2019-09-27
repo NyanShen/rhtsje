@@ -126,6 +126,21 @@
       &.error-show {
         visibility: visible;
       }
+      &.error-pattern-show {
+        visibility: visible;
+        text-align: right;
+        width: 128px;
+        left: 226px;
+      }
+      &.error-pattern-show::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -16px;
+        width: 16px;
+        height: 46px;
+        background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff);
+      }
     }
     .sym-account {
       display: flex;

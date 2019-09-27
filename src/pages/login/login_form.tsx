@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as _ from "loadsh";
 import { useState, useEffect } from "react";
 
 import LoginFormTip from "./login_form_tip";
@@ -6,11 +7,13 @@ import SVGIcon from "../../components/svg-icon";
 import CountiesSelectPopover from "../../components/popover/counties_select";
 import { ILoginData, ILoginValidation, IShowElement } from "./model";
 
+const mobilePattern = /^1[3456789]\d{9}$/;
+// const mobileEmailPattern = /^1[3456789]\d{9}$|^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
 const initShowElement = { showSMS: true, showPass: false, showMobile: false };
 const initLoginData = { mobile: "", account: "", password: "", verifyCode: "" };
 
 const LoginForm = () => {
-    const [loginWay, setloginWay] = useState<String>("pass");
+    const [loginWay, setloginWay] = useState<String>("code");
     const [loginData, setLoginData] = useState<ILoginData>(initLoginData);
     const [showElement, setShowElement] = useState<IShowElement>(initShowElement);
     const [validation, setValidation] = useState<ILoginValidation>({});
@@ -37,7 +40,13 @@ const LoginForm = () => {
         });
     }
 
-    const fetchVerifyCode = () => { }
+    const fetchVerifyCode = () => {
+        setValidation({
+            ...validation,
+            mobileRequired: !loginData.mobile,
+            mobilePattern: loginData.mobile && !mobilePattern.test(loginData.mobile)
+        });
+    }
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLoginData({
@@ -58,9 +67,30 @@ const LoginForm = () => {
     const onInputClick = (name: string) => {
         setValidation({
             ...validation,
-            [`${name}Required`]: false
+            [`${name}Required`]: false,
+            [`${name}Pattern`]: false
         });
         LoginRefs[`${name}Ref`].current.focus();
+    }
+
+    const onLoginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (loginWay === "code") {
+            setValidation({
+                ...validation,
+                mobileRequired: !loginData.mobile,
+                verifyCodeRequired: !loginData.verifyCode,
+                mobilePattern: loginData.mobile && !mobilePattern.test(loginData.mobile)
+            })
+            console.log(_.pick(loginData, "mobile", "verifyCode"));
+        } else {
+            setValidation({
+                ...validation,
+                accountRequired: !loginData.account,
+                passwordRequired: !loginData.password
+            })
+            console.log(_.pick(loginData, "account", "password"));
+        }
     }
 
     const getTabClass = (way: String) => {
@@ -69,11 +99,12 @@ const LoginForm = () => {
 
     const getErrorClass = (name: string) => {
         let basicClass = "sym-input-error-mask";
-        let requiredErrorClass = validation[`${name}Required`] && "error-show";;
+        let requiredErrorClass = validation[`${name}Required`] && "error-show";
+        let patternErrorClass = validation[`${name}Pattern`] && "error-pattern-show";
         switch (name) {
             case "mobile":
                 basicClass = `${basicClass} error-account error-mobile`;
-                return `${basicClass} ${requiredErrorClass}`;
+                return `${basicClass} ${requiredErrorClass} ${patternErrorClass}`;
             case "account":
                 basicClass = `${basicClass} error-account`;
                 const mobileClass = showElement.showMobile && "error-mobile";
@@ -92,7 +123,7 @@ const LoginForm = () => {
 
     const renderInputElement = (name: string, placeholder: string) => {
         return (
-            <div className="sym-input-wrapper">
+            <div className="sym-input-wrapper" onClick={() => onInputClick(name)}>
                 <input
                     type={name === "password" ? (showElement.showPass ? "text" : name) : "text"}
                     name={name}
@@ -102,7 +133,7 @@ const LoginForm = () => {
                     onChange={onInputChange}
                     onBlur={() => onInputBlur(name)}
                 />
-                <div className={getErrorClass(name)} onClick={() => onInputClick(name)}>{`请输入${placeholder}`}</div>
+                <div className={getErrorClass(name)}>{`请输入${placeholder}`}</div>
             </div>
         );
     }
@@ -112,10 +143,10 @@ const LoginForm = () => {
             <div className="sym-form-item sym-account">
                 <div className="sym-countries-select-wrapper"><CountiesSelectPopover /></div>
                 <span className="sym-account-seprator">&nbsp;</span>
-                {renderInputElement("mobile", "手机号")}
+                {renderInputElement("mobile", validation.mobilePattern ? "正确的手机号" : "手机号")}
             </div>
             <div className="sym-form-item sym-password">
-                {renderInputElement("verifyCode", `输入 6 位${getShowText()}验证码`)}
+                {renderInputElement("verifyCode", `${getShowText()}验证码`)}
                 <button
                     type="button"
                     className="sym-btn sym-btn-plain sym-btn-sms-input"
@@ -160,13 +191,13 @@ const LoginForm = () => {
     return (
         <div className="sym-login-content">
             <div className="sym-login-inner">
-                <form className="sym-login-form" noValidate>
+                <form className="sym-login-form" noValidate onSubmit={onLoginSubmit}>
                     <div className="sym-form-tabs">
-                        <div className={getTabClass("code")} onClick={() => switchLoginWay("pass")}>免密码登录</div>
-                        <div className={getTabClass("pass")} onClick={() => switchLoginWay("code")}>密码登录</div>
+                        <div className={getTabClass("pass")} onClick={() => switchLoginWay("code")}>免密码登录</div>
+                        <div className={getTabClass("code")} onClick={() => switchLoginWay("pass")}>密码登录</div>
                     </div>
                     {loginWay === "pass" ? renderAccountElement : renderMobileElement}
-                    <button type="button" className="sym-btn sym-btn-primary sym-btn-submit">注册/登录</button>
+                    <button type="submit" className="sym-btn sym-btn-primary sym-btn-submit">注册/登录</button>
                     <LoginFormTip />
                 </form>
             </div>
