@@ -1,11 +1,11 @@
 import * as React from "react";
-import {Router} from "react-router-dom";
+import {Router, useHistory} from "react-router-dom";
 import { render } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 
 const renderWithRouter = (
     ui: React.ReactElement,
-    { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {},
+    { route = '/', history = createMemoryHistory({ initialEntries: [route] }) }: any = {},
 ) => {
     return {
         ...render(<Router history={history}>{ui}</Router>),
