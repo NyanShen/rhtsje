@@ -48,12 +48,12 @@ const LoginForm = () => {
         });
     }
 
-    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onInputChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         setLoginData({
             ...loginData,
             [e.target.name]: e.target.value
         });
-    }
+    }, [loginData]);
 
     const onInputBlur = (name: string) => {
         if (!loginData[name]) {

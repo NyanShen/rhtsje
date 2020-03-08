@@ -3,6 +3,7 @@ import {HashRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 
 import Login from "./pages/login";
 import TodoList from "./todo_list/TodoList";
+import "../node_modules/antd/dist/antd.css";
 
 const App = () => {
     return (

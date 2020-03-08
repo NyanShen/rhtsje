@@ -7,7 +7,7 @@ const styleLoader = isDev ? "style-loader" : MiniCssExtractPlugin.loader;
 
 module.exports = {
     mode: isDev ? "development" : "production",
-    entry: "./src/index.tsx",
+    entry: ["babel-polyfill", "./src/index.tsx"],
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"],
         alias: {
@@ -20,7 +20,8 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
-                loader: "awesome-typescript-loader"
+                loader: "babel-loader" //use babel.config.js
+                // loader: "awesome-typescript-loader"
             },
             {
                 test: /\.js$/,
@@ -59,6 +60,28 @@ module.exports = {
                                 "./src/styles/_variables.scss",
                                 "./src/styles/_mixins.scss"
                             ]
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.less/,
+                use: [
+                    styleLoader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 3
+                        }
+                    },
+                    "postcss-loader",
+                    {
+                        loader: "less-loader",
+                        options: {
+                           javascriptEnabled: true,
+                           modifyVars: {
+                               '@icon-url': "'~antd-iconfont/iconfont'"
+                           }
                         }
                     }
                 ]
