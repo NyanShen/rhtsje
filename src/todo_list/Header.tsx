@@ -1,6 +1,8 @@
 import * as React from "react";
 import {useState} from "react";
 import {Button} from "antd";
+
+import toastr from "../common/toastr";
 import "./index.scss";
 
 interface IProps {
@@ -18,10 +20,13 @@ const Header = (props: any) => {
             setValue("");
         }
     }
+    const onButnClick = () => {
+        toastr.success("Add TodoList");
+    }
     return (
         <div className="header">
             <div className="header-content">
-                <Button type="primary">TodoList</Button>
+            <Button type="primary" onClick={onButnClick}>TodoList</Button>
                 <input 
                 value={value}
                 className="header-input"
