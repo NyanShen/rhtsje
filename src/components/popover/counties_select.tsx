@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import SVGIcon from "../svg-icon";
-import "./index.scss";
 
 const CountiesSelectPopover = () => {
 

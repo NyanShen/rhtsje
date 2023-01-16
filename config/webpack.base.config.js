@@ -24,8 +24,8 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                enforce: "pre",
-                loader: "source-map-loader"
+                exclude: /node_modules/,
+                loader: "babel-loader"
             },
             {
                 test: /\.css$/,
@@ -38,29 +38,6 @@ module.exports = {
                         }
                     },
                     "postcss-loader"
-                ]
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    styleLoader,
-                    {
-                        loader: "css-loader",
-                        options: {
-                            importLoaders: 3
-                        }
-                    },
-                    "postcss-loader",
-                    "sass-loader",
-                    {
-                        loader: "sass-resources-loader",
-                        options: {
-                            resources: [
-                                "./src/styles/_variables.scss",
-                                "./src/styles/_mixins.scss"
-                            ]
-                        }
-                    }
                 ]
             },
             {
