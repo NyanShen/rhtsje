@@ -7,11 +7,12 @@ const styleLoader = isDev ? "style-loader" : MiniCssExtractPlugin.loader;
 
 module.exports = {
     mode: isDev ? "development" : "production",
-    entry: "./src/index.tsx",
+    entry: ["babel-polyfill", "./src/index.tsx"],
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"],
         alias: {
             "assets": path.resolve(__dirname, "src/assets/"),
+            "common": path.resolve(__dirname, "src/common/"),
             "components": path.resolve(__dirname, "src/components/")
         }
     },
@@ -20,7 +21,8 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
-                loader: "awesome-typescript-loader"
+                loader: "babel-loader" //use babel.config.js
+                // loader: "awesome-typescript-loader"
             },
             {
                 test: /\.js$/,
@@ -41,6 +43,54 @@ module.exports = {
                 ]
             },
             {
+<<<<<<< HEAD
+=======
+                test: /\.scss$/,
+                use: [
+                    styleLoader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 3
+                        }
+                    },
+                    "postcss-loader",
+                    "sass-loader",
+                    {
+                        loader: "sass-resources-loader",
+                        options: {
+                            resources: [
+                                "./src/styles/_variables.scss",
+                                "./src/styles/_mixins.scss"
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.less/,
+                use: [
+                    styleLoader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 3
+                        }
+                    },
+                    "postcss-loader",
+                    {
+                        loader: "less-loader",
+                        options: {
+                           javascriptEnabled: true,
+                           modifyVars: {
+                               '@icon-url': "'~antd-iconfont/iconfont'"
+                           }
+                        }
+                    }
+                ]
+            },
+            {
+>>>>>>> 8a7f695f03fae0d8e1ad9360a9e4514cf633e2a3
                 test: /\.(png|jpe?g|svg|gif)$/,
                 use: {
                     loader: "url-loader",
