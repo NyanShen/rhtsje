@@ -1,18 +1,23 @@
 import * as React from "react";
+import { Provider } from 'react-redux'
 import {HashRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 
-import Login from "./pages/login";
+import Home from "./pages/home";
+import configureStore from "./redux/configureStore";
 
 const App = () => {
+    const store = configureStore();
     return (
-        <Router>
+        <Provider store={store}>
+            <Router>
             <Switch>
                 <Route exact path="/">
-                    <Redirect to="/login"></Redirect>
+                    <Redirect to="/home"></Redirect>
                 </Route>
-                <Route exact path="/login" component={Login}></Route>
+                <Route exact path="/home" component={Home}></Route>
             </Switch>
         </Router>
+        </Provider>
     )
 }
 
