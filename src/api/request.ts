@@ -2,7 +2,11 @@ const queryString = require('query-string')
 require('es6-promise').polyfill()
 require('isomorphic-fetch')
 import config from './config'
-
+/**
+ * 请求状态过滤
+ * @param res 
+ * @returns 
+ */
 function filterStatus(res: any) {
     if (res.status >= 0xc8 && res.status < 0x12c) {
         return res
@@ -13,7 +17,11 @@ function filterStatus(res: any) {
     error.name = config.apiErrorMsg
     throw error
 }
-
+/**
+ * 请求数据格式化
+ * @param res 
+ * @returns 
+ */
 function filterJSON(res: any) {
     var r = res.text()
     r = r.then(function (text: string) {
@@ -32,7 +40,6 @@ function filterJSON(res: any) {
 
 function _fetch(fetchPromise: any, timeout: number) {
     var abortPromise = new Promise(function (resolve, reject) {
-        console.log(resolve, reject)
         setTimeout(reject, timeout)
     })
 

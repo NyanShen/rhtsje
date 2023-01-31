@@ -1,0 +1,86 @@
+.header {
+    width: 100%;
+    height: 70px;
+    padding: 25px 15px 0 15px;
+    background: #FFFFFF;
+    box-shadow: 0 5px 4px 0 rgba(170, 170, 170, 0.07);
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 888;
+
+    .headerLogo {
+        display: flex;
+        align-items: center;
+        margin-right: 15px
+
+        img {
+            width: 54px;
+            height: 54px;
+            margin-right: 15px;
+        }
+
+        .p1 {
+            line-height: 28px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+
+    .leftAuto {
+        font-size: 16;
+        color: #47484a;
+        margin-top: 10px;
+        height: 20px;
+        line-height: 20px;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 1000px) {
+    .header {
+        overflow: hidden;
+
+        .drawer {
+            background-color: transparent;
+            position: fixed;
+            z-index: 9999;
+            top: 20px;
+            left: 5px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .drawerMask {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            z-index: 99;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .drawerContent {
+            position: fixed;
+            width: 60%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: white;
+
+            .nav {
+                height: 120px !important;
+
+                >* {
+                    display: block;
+                    width: 100%;
+                    height: 40px;
+                    margin: 10px;
+                }
+            }
+        }
+
+        .networkOpen {
+            width: 300px;
+        }
+    }
+}

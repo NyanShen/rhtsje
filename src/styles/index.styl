@@ -1,0 +1,94 @@
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+        padding-left: 0;
+        padding-right: 0;
+
+        .row {
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+
+.vhCenter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.withRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex_1 {
+    flex: 1;
+}
+
+.operationItem {
+    cursor: pointer;
+}
+
+.t-r {
+    text-align: right;
+}
+
+.c-quiet {
+    color: #3f4d72;
+}
+
+.c-b {
+    color: #2170ff;
+}
+
+.d-grid {
+    display: grid;
+}
+
+.d-grid-r10 {
+    grid-row-gap: 10px;
+}
+
+.d-grid-ckv {
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 2fr;
+}
+
+.bg-dashboard {
+    min-height: calc(100vh - 293px); /* 总高度 - 头部 - 底部 */
+    background: radial-gradient(50% 142.58% at 50% 50%, #fff 0%, #e6eaf2 80.21%);
+}
+
+.dashboard-main-wrap {
+    padding: 15px;
+    grid-row-gap: 20px;
+    grid-template-columns: 100%;
+    font-size: 14px;
+}
+
+.dashboard-main {
+    grid-gap: 2px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* 块 */
+.card-wrap {
+    border-radius: 8px;
+    background-color: #eff2f9;
+    border: 1px solid #fffff9;
+
+    .card-wrap-body {
+        width: 100%;
+        padding: 25px;
+        box-sizing: border-box;
+
+        .card-title {
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1;
+            font-weight: 500;
+        }
+    }
+}
