@@ -1,18 +1,23 @@
 import * as React from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
 import * as dataAPI from '../../api/dataAPI';
 import { IRootState } from "../../redux/states";
 import { ADD_COUNT, SET_COUNT } from "../../redux/actionTypes";
+import { testWeb3EthApi, isAddress } from "../../utils/web3";
 import "./index.styl"
-import { useState } from "react";
 
 const Login = ({ count, addCount, setCount }: any) => {
-    
+    const testAddress = `0x93cd427d3ac9a06ab6a340b4fe5da525c1e3ecb0bdbd06c6304752c5580819e2`;
     const [blockNumber, setBlockNumber] = useState<number>(0);
+    const [web3Str, setWeb3Str] = useState<string>("");
+    const [isAddr, setIsAddr] = useState<boolean>(false);
 
     const testApi = () => {
         dataAPI.getBlockNumber().then((res: number) => {
             setBlockNumber(res);
+            setWeb3Str(testWeb3EthApi())
+            setIsAddr(isAddress(testAddress))
         })
     }
 
@@ -38,6 +43,18 @@ const Login = ({ count, addCount, setCount }: any) => {
                                     <span className="c-quiet">最新区块</span>
                                     <div className="t-r">
                                         <span className="c-b">{blockNumber.toLocaleString()}</span>
+                                    </div>
+                                </div>
+                                <div className="d-grid d-grid-ckv">
+                                    <span className="c-quiet">测试web3 eth api</span>
+                                    <div className="t-r">
+                                        <span>{web3Str}</span>
+                                    </div>
+                                </div>
+                                <div className="d-grid d-grid-ckv">
+                                    <span className="c-quiet">账户地址？</span>
+                                    <div className="t-r">
+                                        <span>{isAddr ? "是" : "否"}</span>
                                     </div>
                                 </div>
                             </div>
