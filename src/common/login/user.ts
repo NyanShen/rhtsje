@@ -1,7 +1,12 @@
 import { simpleLocalStorage } from "simple-storage";
 import authorization from "./authorization";
-
-let user = null;
+interface IUser {
+    tokenId: string;
+    id: string;
+    username: string;
+    fullName: string;
+}
+let user: IUser;
 const persistUser = (response: any) => {
     user = {
         tokenId: response.id,
@@ -13,7 +18,7 @@ const persistUser = (response: any) => {
     const encodeUser = btoa(JSON.stringify(user));
     simpleLocalStorage.setItem("current-user", encodeUser);
 }
-const getUser = () => {
+const getUser = (): IUser => {
     const storageUser = localStorage.getItem("current-user");
     if (storageUser) {
         user = JSON.parse(atob(storageUser));
@@ -21,7 +26,7 @@ const getUser = () => {
     }
     return user
 }
-const getAuthorization = () => {
+const getAuthorization = (): string | undefined => {
     if (authorization.get()) {
         return authorization.get();
     }
@@ -35,10 +40,15 @@ const getAuthorization = () => {
     }
     return undefined;
 }
-const hasLogin = () => !!getUser();
+const hasLogin = (): boolean => !!getUser();
 
-const clear = () => {
-    user = null;
+const clear = (): void => {
+    user = {
+        tokenId: "",
+        id: "",
+        username: "",
+        fullName: ""
+    };
     simpleLocalStorage.clear();
     authorization.clear();
 }

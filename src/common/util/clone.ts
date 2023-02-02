@@ -1,17 +1,33 @@
-export const shallowClone = (object: any) => {
-    const newObject = {};
+/**
+ * 浅拷贝
+ * @param object 
+ * @returns 
+ */
+export const shallowClone = <T extends {}>(object: T): any => {
+    let newObject = {}
     for (const key in object) {
         if (object.hasOwnProperty(key)) {
-            newObject[key] = object[key];
+            newObject = {
+                ...newObject,
+                [key]: object[key]
+            };
         }
     }
     return newObject;
 }
-
+/**
+ * 浅拷贝
+ * @param object 
+ * @returns 
+ */
 export const jsonClone = (object: any) => {
     return JSON.parse(JSON.stringify(object));
 }
-
+/**
+ * 深拷贝
+ * @param object 
+ * @returns 
+ */
 export const cloneDeep = (object: any) => {
     if (typeof object !== "object") return object;
     const newObject = object instanceof Array ? [] : {};
@@ -27,7 +43,12 @@ export const cloneDeep = (object: any) => {
     return newObject
 }
 
-// 对特殊对象进行类型判断
+/**
+ * 对特殊对象进行类型判断
+ * @param object 
+ * @param type 
+ * @returns 
+ */
 const isType = (object, type): boolean => {
     if (typeof object !== "object") return false;
     const typeString = Object.prototype.toString.call(object);
@@ -43,7 +64,11 @@ const isType = (object, type): boolean => {
     }
 }
 
-// 实现一个提取flags的函数
+/**
+ * 实现一个提取flags的函数
+ * @param regExp 
+ * @returns 
+ */
 const getRegExpFlags = (regExp: RegExp) => {
     let flags = "";
     if (regExp.global) flags += "g";
@@ -51,11 +76,16 @@ const getRegExpFlags = (regExp: RegExp) => {
     if (regExp.multiline) flags += "m";
     return flags;
 }
-// Buffer对象、Promise、Set、Map暂未处理
-export const deepClone = oldObject => {
+/**
+ * 深拷贝
+ * Buffer对象、Promise、Set、Map暂未处理
+ * @param oldObject 
+ * @returns 
+ */
+export const deepClone = (oldObject) => {
     // 维护两个储存循环引用的数组
-    const oldObjects = [];
-    const newObjects = [];
+    const oldObjects: any = [];
+    const newObjects: any = [];
 
     const _deepClone = oldObject => {
         // 递归直到oldobject为null时，或类型不为“object”时停止。

@@ -4,9 +4,9 @@ const uniqueArraysBySet = (arrays) => {
     return result;
 }
 
-const uniqueArraysByObject = (arrays) => {
-    let obj = {};
-    let result = [];
+const uniqueArraysByObject = <T extends []> (arrays: T): Partial<T>[] => {
+    let obj: any = {};
+    let result: Partial<T>[] = [];
     for (let i of arrays) {
         if (!obj[i]) {
             result.push(i);

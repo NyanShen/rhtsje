@@ -1,7 +1,7 @@
 import { encodeParam } from "./encript_param";
 
 export const toUrlParam = (param: any): string => {
-    if (typeof param !== "object") return;
+    if (typeof param !== "object") return "";
     let urlParam = "";
     for (const key in param) {
         if (param.hasOwnProperty(key)) {

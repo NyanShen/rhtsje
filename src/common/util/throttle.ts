@@ -1,4 +1,10 @@
-export const throttle = (fn, delay = 500) => {
+/**
+ * 节流
+ * @param fn 
+ * @param delay 
+ * @returns 
+ */
+export const throttle = (fn, delay = 500): Function => {
     let flag = true;
     return (...args) => {
         if (!flag) return;

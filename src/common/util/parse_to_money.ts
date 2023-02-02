@@ -1,4 +1,5 @@
-export const parseNumToMoney = (num: number) => { // 23.4
+
+export const parseNumToMoney = (num: number): string => { // 23.4
     /**
      * num = parseFloat(num.toFixed(3)); // "23.400"
      * number类型也可以使用split方法

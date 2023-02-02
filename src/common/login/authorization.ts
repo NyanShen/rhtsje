@@ -4,7 +4,7 @@
  * encript.setPublicKey("public key from backend")
  **/
 
-let authorization: string;
+let authorization: string | undefined;
 
 const encodeNonASC = (str: string) => {
     return /^[\x00-\x7F]*$/.test(str) ? str : encodeURIComponent(str);
