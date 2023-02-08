@@ -5,6 +5,7 @@ import * as dataAPI from '../../api/dataAPI';
 import { IRootState } from "../../redux/states";
 import { ADD_COUNT, SET_COUNT } from "../../redux/actionTypes";
 import { testWeb3EthApi, isAddress } from "../../utils/web3";
+import { topTransactions } from "../../api/rebirthAPI";
 import "./index.styl"
 
 const Login = ({ count, addCount, setCount }: any) => {
@@ -27,6 +28,9 @@ const Login = ({ count, addCount, setCount }: any) => {
 
     const setCount15 = () => {
         setCount(15)
+        topTransactions().then(response => {
+            console.log("topTransactions>>>", response)
+        })
     }
 
     testApi()

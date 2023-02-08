@@ -10,7 +10,7 @@ interface ITestAction {
     data: number
 }
 
-export default function addCount(
+export default function (
     state: ITest = initialState,
     action: ITestAction
 ) {
