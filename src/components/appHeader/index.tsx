@@ -1,7 +1,17 @@
 import React, { useState } from "react"
 
 import header_logo from "../../images/header_logo.png"
+import header_search from "../../images/header_search.png"
 import "./index.styl"
+
+const Sidebar = () => {
+    return (
+        <div className="input-group">
+            Sidebar
+            <input type="text" placeholder="搜索 区块 / 交易 / 地址" className="form-control" />
+        </div>
+    )
+}
 
 const AppHeader = () => {
     /**
@@ -19,7 +29,7 @@ const AppHeader = () => {
                     </div>
                 </div>
                 <div className="flex_1 leftAuto">
-                    menu
+                    <Sidebar />
                 </div>
             </div>
 

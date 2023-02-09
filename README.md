@@ -33,6 +33,7 @@ git config --global https.sslVerify false
 
 5、注意@types/* 与 typescript版本对应关系
 package-lock.json不能删除
+antd版本安装4.24.7则会报错，由package-lock.json固定版本
 
 
 #### 运行
