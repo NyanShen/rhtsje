@@ -11,6 +11,7 @@
     }
 }
 
+// 布局
 .vhCenter {
     display: flex;
     flex-direction: row;
@@ -27,20 +28,8 @@
     flex: 1;
 }
 
-.operationItem {
-    cursor: pointer;
-}
-
-.t-r {
-    text-align: right;
-}
-
-.c-quiet {
-    color: #3f4d72;
-}
-
-.c-b {
-    color: #2170ff;
+.flex_i_c {
+    align-items: center;
 }
 
 .d-grid {
@@ -56,6 +45,11 @@
     grid-template-columns: 1fr 2fr;
 }
 
+.operationItem {
+    cursor: pointer;
+}
+
+// 中间布局
 .bg-dashboard {
     min-height: calc(100vh - 210px); /* 总高度 - 头部 - 底部 */
     background: radial-gradient(50% 142.58% at 50% 50%, #fff 0%, #e6eaf2 80.21%);
@@ -91,4 +85,38 @@
             font-weight: 500;
         }
     }
+}
+
+.shawdow-block {
+    box-shadow: 0 20px 24px -20px rgb(15 18 96 / 10%);
+}
+
+// 文字
+.t-r {
+    text-align: right;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+
+// 颜色
+.c-quiet {
+    color: #3f4d72;
+}
+
+.c-b {
+    color: #2170ff;
+}
+
+.c-grey {
+    color: #8191b5;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
 }

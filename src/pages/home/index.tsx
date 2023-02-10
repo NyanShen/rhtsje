@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import * as dataAPI from '../../api/dataAPI';
 import { IRootState } from "../../redux/states";
 import { ADD_COUNT, SET_COUNT } from "../../redux/actionTypes";
@@ -9,21 +10,28 @@ import { topTransactions } from "../../api/rebirthAPI";
 import "./index.styl"
 
 const Login = ({ count, addCount, setCount }: any) => {
-    const testAddress = `0x93cd427d3ac9a06ab6a340b4fe5da525c1e3ecb0bdbd06c6304752c5580819e2`;
+    const testAddress = `0x3fbef0cc8aac891279520d148188ebdb156bf70e`;
     const [blockNumber, setBlockNumber] = useState<number>(0);
     const [web3Str, setWeb3Str] = useState<string>("");
+    const [blockHash, setBlockHash] = useState<string>("");
     const [isAddr, setIsAddr] = useState<boolean>(false);
+    let history = useHistory();
 
-    const testApi = () => {
-        dataAPI.getBlockNumber().then((res: number) => {
-            setBlockNumber(res);
-            setWeb3Str(testWeb3EthApi())
-            setIsAddr(isAddress(testAddress))
-        })
+    const testApi = async () => {
+        let bn: number = await dataAPI.getBlockNumber();
+        setBlockNumber(bn);
+        let bh: any = await dataAPI.getBlock(blockNumber);
+        setBlockHash(bh.hash)
+        setWeb3Str(testWeb3EthApi())
+        setIsAddr(isAddress(testAddress))
     }
 
     const add = () => {
         addCount(1)
+    }
+
+    const testRoute = () => {
+        history.push("/account/123456")
     }
 
     const setCount15 = () => {
@@ -56,9 +64,15 @@ const Login = ({ count, addCount, setCount }: any) => {
                                     </div>
                                 </div>
                                 <div className="d-grid d-grid-ckv">
-                                    <span className="c-quiet">账户地址？</span>
+                                    <span className="c-quiet">cita服务账户地址</span>
                                     <div className="t-r">
                                         <span>{isAddr ? "是" : "否"}</span>
+                                    </div>
+                                </div>
+                                <div className="d-grid d-grid-ckv">
+                                    <span className="c-quiet">当前块高对应hash</span>
+                                    <div className="t-r">
+                                        <span>{blockHash}</span>
                                     </div>
                                 </div>
                             </div>
@@ -76,8 +90,8 @@ const Login = ({ count, addCount, setCount }: any) => {
             <div className="test-wrap">
                 <div className="title">测试redux数据：{count}</div>
                 <button onClick={add}>+</button>
-                <button>-</button>
-                <button onClick={setCount15}>15</button>
+                <button onClick={testRoute}>测试路由</button>
+                <button onClick={setCount15}>获取cita最新交易</button>
             </div>
         </div>
     );

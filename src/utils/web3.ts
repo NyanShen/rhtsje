@@ -25,6 +25,24 @@ export function isAddress(address: string): boolean {
     return web3Utils.isAddress(format0x(address))
 }
 /**
+ * 判断是否为块高
+ * @param str 
+ * @returns 
+ */
+export function isBlockHeight(str: string): boolean {
+    let number = parseInt(str)
+    return Number.isSafeInteger(number)
+}
+/**
+ * 判断是否为hsah值
+ * @param str 
+ * @returns 
+ */
+export function isHash(str: string): boolean {
+    const value: string = format0x(str).toString()
+    return value.length === 66 && web3Utils.isHexStrict(value)
+}
+/**
  * 测试加密数据
  * @returns 
  */
