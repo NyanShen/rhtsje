@@ -4,8 +4,8 @@ import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 
 import Home from "./pages/home";
 import AccountDetail from "./pages/account/detail";
-import Block from "./pages/block/index";
-import Tx from "./pages/tx/detail";
+import BlockDetail from "./pages/block/detail";
+import TxDetail from "./pages/tx/detail";
 import AppLayout from "./components/appLayout";
 import configureStore from "./redux/configureStore";
 import "antd/dist/antd.css";
@@ -25,8 +25,8 @@ const App = () => {
                         </Route>
                         <Route exact path="/home" component={Home}></Route>
                         <Route path="/account/:id" component={AccountDetail}></Route>
-                        <Route path="/block/:id" component={Block}></Route>
-                        <Route path="/tx/:id" component={Tx}></Route>
+                        <Route path="/block/:id" component={BlockDetail}></Route>
+                        <Route path="/tx/:id" component={TxDetail}></Route>
                     </Switch>
                 </AppLayout>
             </Router>

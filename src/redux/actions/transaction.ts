@@ -1,6 +1,7 @@
 /**
  * 异步处理共有交易数据
  */
+import { Dispatch } from "redux"
 import * as dataApi from "../../api/dataAPI"
 import * as actionType from "../actionTypes"
 import {
@@ -25,7 +26,7 @@ export type TransactionAction = {
  * @returns 
  */
 export const getTransaction = (hash: string) => {
-    return (dispatch: any) => {
+    return (dispatch: Dispatch) => {
         return dataApi.getTransaction(hash)
             .then((response: TransactionItem) => {
                 // if (response?.unsignedTransaction?.transaction?.to) {

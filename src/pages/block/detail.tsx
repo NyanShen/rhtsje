@@ -9,7 +9,7 @@ import copy from "copy-to-clipboard";
 
 import CopySVG from '../../components/svgIcons/copySvg/index';
 import { IRootState } from '../../redux/states';
-import * as transactionAction from "../../redux/actions/transaction";
+import * as blockAction from "../../redux/actions/block";
 import './detail.styl'
 /**
  * 根据交易hash查询详情信息
@@ -19,7 +19,7 @@ const CopyIcon = (props: Partial<CustomIconComponentProps>) => (
     <Icon component={CopySVG} {...props} />
 );
 
-const TxDetail = ({ transaction, transactionAction }) => {
+const BlockDetail = ({ block, blockAction }) => {
     const [tooltipText, setTooltipText] = useState<string>("点击复制");
     let params: { id: string } = useParams();
 
@@ -28,7 +28,7 @@ const TxDetail = ({ transaction, transactionAction }) => {
         setTooltipText("复制成功");
     }
     useEffect(() => {
-        transactionAction.getTransaction(params.id)
+        blockAction.getBlock(params.id)
     }, [params.id])
 
     return (
@@ -51,24 +51,24 @@ const TxDetail = ({ transaction, transactionAction }) => {
                             <div className="card-item">
                                 <h3 className="card-title">General info</h3>
                                 {
-                                    transaction && transaction.item && (
+                                    block && block.item && (
                                         <div className="d-grid d-grid-r10">
                                             <div className="d-grid d-grid-ckv">
                                                 <span className="c-quiet">区块</span>
                                                 <div>
-                                                    <span className="c-b">{transaction.item.blockNumber}</span>
+                                                    <span className="c-b">{block.item.blockNumber}</span>
                                                 </div>
                                             </div>
                                             <div className="d-grid d-grid-ckv">
                                                 <span className="c-quiet">发送方</span>
                                                 <div>
-                                                    <span>{transaction.item.from}</span>
+                                                    <span>{block.item.from}</span>
                                                 </div>
                                             </div>
                                             <div className="d-grid d-grid-ckv">
                                                 <span className="c-quiet">区块哈希</span>
                                                 <div>
-                                                    <span>{transaction.item.blockHash}</span>
+                                                    <span>{block.item.blockHash}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,9 +85,9 @@ const TxDetail = ({ transaction, transactionAction }) => {
 
 export default connect(
     (state: IRootState) => ({
-        transaction: state.transaction
+        block: state.block
     }),
     (dispatch: Dispatch) => ({
-        transactionAction: bindActionCreators(transactionAction, dispatch)
+        blockAction: bindActionCreators(blockAction, dispatch)
     }),
-)(TxDetail)
+)(BlockDetail)
