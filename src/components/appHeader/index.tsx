@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useHistory, withRouter } from "react-router-dom"
+import { Link, useHistory, withRouter } from "react-router-dom"
 import { Input } from "antd"
 import { SearchOutlined } from '@ant-design/icons'
 
@@ -10,7 +10,7 @@ import { BlockItem } from "../../redux/states/block"
 import header_logo from "../../images/header_logo.png"
 import "./index.styl"
 
-const Sidebar = () => {
+const SearchBar = () => {
     const [searchText, setSearchText] = useState<string>("")
     const { Search } = Input
     let history = useHistory()
@@ -65,11 +65,11 @@ const Sidebar = () => {
         setSearchText("");
     }
     return (
-        <div className="input-group">
+        <div className="input-search">
             <Search
-                size="large"
                 prefix={<SearchOutlined />}
-                maxLength={66} type="text"
+                maxLength={66}
+                type="text"
                 placeholder="搜索 区块 / 交易 / 地址"
                 enterButton="搜索"
                 required
@@ -78,6 +78,19 @@ const Sidebar = () => {
                 onKeyUp={handleKeyup}
                 onSearch={handleSearch}
             />
+        </div>
+    )
+}
+
+const HeaderMenu = () => {
+    return (
+        <div className="header-menu">
+            <Link className="menu-item" to="/blockList">
+                区块
+            </Link>
+            <Link className="menu-item" to="/txList">
+                交易
+            </Link>
         </div>
     )
 }
@@ -103,7 +116,10 @@ const AppHeader = () => {
                     </div>
                 </div>
                 <div className="flex_1 leftAuto">
-                    <Sidebar />
+                    <HeaderMenu />
+                </div>
+                <div className="flex_1 leftAuto">
+                    <SearchBar />
                 </div>
             </div>
 

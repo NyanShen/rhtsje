@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux';
 import { Col, Row, Tooltip } from 'antd';
-import Icon from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
-import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon';
 import copy from "copy-to-clipboard";
 
-import CopySVG from '../../components/svgIcons/copySvg/index';
+import { CopyIcon } from '../../components/svgIcons/index';
 import { IRootState } from '../../redux/states';
 import * as transactionAction from "../../redux/actions/transaction";
 import './detail.styl'
@@ -15,9 +13,6 @@ import './detail.styl'
  * 根据交易hash查询详情信息
  * @returns 
  */
-const CopyIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={CopySVG} {...props} />
-);
 
 const TxDetail = ({ transaction, transactionAction }) => {
     const [tooltipText, setTooltipText] = useState<string>("点击复制");

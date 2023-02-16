@@ -1,3 +1,4 @@
 :root {
     --c-blue-d1: #2170ff;
+    --c-coinbase-fill: var(--c-blue-d1);
 }

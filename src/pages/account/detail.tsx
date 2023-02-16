@@ -1,20 +1,15 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Col, Row, Tooltip } from 'antd';
-import Icon from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
-import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon';
 import copy from "copy-to-clipboard";
 
-import CopySVG from '../../components/svgIcons/copySvg/index';
+import { CopyIcon } from '../../components/svgIcons/index';
 import './detail.styl'
 /**
  * 账户地址详情信息
  * @returns 
  */
-const CopyIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={CopySVG} {...props} />
-);
 
 const AccountDetail = () => {
     const [tooltipText, setTooltipText] = useState<string>("点击复制");
@@ -45,25 +40,25 @@ const AccountDetail = () => {
                             <div className="card-item">
                                 <h3 className="card-title">General info</h3>
                                 <div className="d-grid d-grid-r10">
-                                <div className="d-grid d-grid-ckv">
-                                    <span className="c-quiet">最新区块</span>
-                                    <div>
-                                        <span className="c-b">1</span>
+                                    <div className="d-grid d-grid-ckv">
+                                        <span className="c-quiet">最新区块</span>
+                                        <div>
+                                            <span className="c-b">1</span>
+                                        </div>
+                                    </div>
+                                    <div className="d-grid d-grid-ckv">
+                                        <span className="c-quiet">测试web3 eth api</span>
+                                        <div>
+                                            <span>2</span>
+                                        </div>
+                                    </div>
+                                    <div className="d-grid d-grid-ckv">
+                                        <span className="c-quiet">账户地址？</span>
+                                        <div>
+                                            <span>3</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="d-grid d-grid-ckv">
-                                    <span className="c-quiet">测试web3 eth api</span>
-                                    <div>
-                                        <span>2</span>
-                                    </div>
-                                </div>
-                                <div className="d-grid d-grid-ckv">
-                                    <span className="c-quiet">账户地址？</span>
-                                    <div>
-                                        <span>3</span>
-                                    </div>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>
