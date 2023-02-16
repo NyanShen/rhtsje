@@ -6,6 +6,7 @@ import { SearchOutlined } from '@ant-design/icons'
 import { format0x, isAddress, isBlockHeight, isHash } from "../../utils/web3"
 import * as dataApi from "../../api/dataAPI"
 import { TransactionItem } from "../../redux/states/transaction"
+import { BlockItem } from "../../redux/states/block"
 import header_logo from "../../images/header_logo.png"
 import "./index.styl"
 
@@ -46,11 +47,13 @@ const Sidebar = () => {
             let transaction: TransactionItem | null = await dataApi.getTransaction(searchText)
             if (transaction) {
                 history.push("/tx/" + searchText)
+                setSearchText("");
                 return
             }
-            let block: any = await dataApi.getBlock(searchText)
+            let block: BlockItem | null = await dataApi.getBlock(searchText)
             if (block) {
                 history.push("/block/" + searchText)
+                setSearchText("");
                 return
             }
             history.push("/search?q=" + searchText)

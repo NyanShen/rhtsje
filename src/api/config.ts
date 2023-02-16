@@ -32,7 +32,7 @@ const api: API = {
     serverList: [
         {
             name: 'Re-Birth Server',
-            url: 'https://rebirth.citahub.com'
+            url: 'http://192.168.8.239:1337'
         },
         {
             name: 'CITA Node Server',

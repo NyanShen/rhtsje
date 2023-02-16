@@ -8,6 +8,13 @@ export function clearAll() {
   window.localStorage.removeItem('selectNetwork')
   window.localStorage.removeItem('networks')
 }
+/**
+ * 切换网络，更新至缓存
+ * @param network 
+ */
+export function setSelectNetwork(network: ServerNode) {
+  window.localStorage.setItem('selectNetwork', JSON.stringify(network))
+}
 
 // 获取网络配置，缓存有则取缓存，无则取默认网络配置
 export function getSelectNetwork(): ServerNode {

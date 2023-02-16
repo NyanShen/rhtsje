@@ -70,7 +70,7 @@ const Login = ({ count, addCount, setCount }: any) => {
                                     </div>
                                 </div>
                                 <div className="d-grid d-grid-ckv">
-                                    <span className="c-quiet">当前块高对应hash</span>
+                                    <span className="c-quiet">当前区块hash</span>
                                     <div className="t-r">
                                         <span>{blockHash}</span>
                                     </div>

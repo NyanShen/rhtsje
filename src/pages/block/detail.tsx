@@ -36,7 +36,7 @@ const BlockDetail = ({ block, blockAction }) => {
             <Row>
                 <Col span={16} offset={4}>
                     <div className="block-wrapper shadow-block mb-20">
-                        <span className="c-grey">哈希值</span>
+                        <span className="c-grey">区块哈希值</span>
                         <div className="withRow flex_i_c">
                             <h2 className="fs-20 mr-10">{params.id}</h2>
                             <div onClick={handleCopy} onMouseEnter={() => setTooltipText("点击复制")}>
@@ -51,24 +51,30 @@ const BlockDetail = ({ block, blockAction }) => {
                             <div className="card-item">
                                 <h3 className="card-title">General info</h3>
                                 {
-                                    block && block.item && (
+                                    block && block.item && block.item.header && (
                                         <div className="d-grid d-grid-r10">
                                             <div className="d-grid d-grid-ckv">
-                                                <span className="c-quiet">区块</span>
+                                                <span className="c-quiet">区块号</span>
                                                 <div>
-                                                    <span className="c-b">{block.item.blockNumber}</span>
+                                                    <span className="c-b">{block.item.header.number}</span>
                                                 </div>
                                             </div>
                                             <div className="d-grid d-grid-ckv">
-                                                <span className="c-quiet">发送方</span>
+                                                <span className="c-quiet">交易回执树根</span>
                                                 <div>
-                                                    <span>{block.item.from}</span>
+                                                    <span className="c-b">{block.item.header.receiptsRoot}</span>
                                                 </div>
                                             </div>
                                             <div className="d-grid d-grid-ckv">
-                                                <span className="c-quiet">区块哈希</span>
+                                                <span className="c-quiet">状态树根</span>
                                                 <div>
-                                                    <span>{block.item.blockHash}</span>
+                                                    <span>{block.item.header.stateRoot}</span>
+                                                </div>
+                                            </div>
+                                            <div className="d-grid d-grid-ckv">
+                                                <span className="c-quiet">交易树根</span>
+                                                <div>
+                                                    <span>{block.item.header.transactionsRoot}</span>
                                                 </div>
                                             </div>
                                         </div>
