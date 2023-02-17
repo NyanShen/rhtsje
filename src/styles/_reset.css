@@ -32,3 +32,16 @@ input{
 .toast-top-center {
 	margin-top: 250px;
 }
+
+.ant-table thead > tr > th {
+	border-top: 1px solid #ebebeb;
+	border-bottom-color: #ebebeb;
+}
+
+.ant-table thead > th > td {
+	background: #f9f9f9;
+}
+
+.ant-table tbody > tr > td {
+	background: #f9f9f9;
+}

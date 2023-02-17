@@ -12,6 +12,7 @@ import TxDetail from "./pages/tx/detail";
 import AppLayout from "./components/appLayout";
 import configureStore from "./redux/configureStore";
 import "antd/dist/antd.css";
+import "./iconfont/iconfont.css";
 import "./styles/_reset.css";
 import "./styles/variables.css";
 import "./styles/index.styl";

@@ -5,7 +5,7 @@ const AppFooter = () => {
     return (
         <div className="footer">
             <div className="container">
-                <div className="row vhCenter">
+                <div className="row flex-row_c">
                     @湖北蚂蚁云服信息科技有限公司
                 </div>
 

@@ -26,11 +26,11 @@ const AccountDetail = () => {
                 <Col span={16} offset={4}>
                     <div className="block-wrapper shadow-block mb-20">
                         <span className="c-grey">地址</span>
-                        <div className="withRow flex_i_c">
+                        <div className="flex-row flex_i_c">
                             <h2 className="fs-20 mr-10">{params.id}</h2>
                             <div onClick={handleCopy} onMouseEnter={() => setTooltipText("点击复制")}>
                                 <Tooltip title={tooltipText}>
-                                    <CopyIcon className="operationItem" />
+                                    <CopyIcon className="c-p" />
                                 </Tooltip>
                             </div>
                         </div>

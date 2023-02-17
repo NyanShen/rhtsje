@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Link, useHistory, withRouter } from "react-router-dom"
+import React, { useEffect, useState } from "react"
+import { Link, useHistory, useLocation } from "react-router-dom"
 import { Input } from "antd"
 import { SearchOutlined } from '@ant-design/icons'
 
@@ -13,7 +13,7 @@ import "./index.styl"
 const SearchBar = () => {
     const [searchText, setSearchText] = useState<string>("")
     const { Search } = Input
-    let history = useHistory()
+    const history = useHistory()
     /**
      * 输入赋值
      * @param event 
@@ -99,16 +99,21 @@ const AppHeader = () => {
     /**
      * 打开关闭抽屉
      */
-    const [open, setOpen] = useState<boolean>(true);
+    const [isSearch, setIsSearch] = useState<boolean>(false);
+    const history = useHistory();
+    const location = useLocation();
 
-    let history = useHistory()
+    useEffect(() => {
+        setIsSearch(location.pathname === "/search");
+    }, [location])
+
     const handleBackHome = () => {
         history.push("/")
     }
     return (
         <div className="header">
-            <div className="withRow container" style={{ height: 41 }}>
-                <div className="headerLogo operationItem" onClick={handleBackHome}>
+            <div className="flex-row container" style={{ height: 41 }}>
+                <div className="headerLogo c-p" onClick={handleBackHome}>
                     <img src={header_logo} />
                     <div className="headerTitle">
                         <p className="p1">处方流转链</p>
@@ -118,9 +123,13 @@ const AppHeader = () => {
                 <div className="flex_1 leftAuto">
                     <HeaderMenu />
                 </div>
-                <div className="flex_1 leftAuto">
-                    <SearchBar />
-                </div>
+                {
+                    !isSearch && (
+                        <div className="flex_1 leftAuto">
+                            <SearchBar />
+                        </div>
+                    )
+                }
             </div>
 
 

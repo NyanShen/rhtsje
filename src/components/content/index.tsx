@@ -17,7 +17,9 @@ interface IProps { className?: string }
 const Content: React.FunctionComponent<IProps> = (props: React.PropsWithChildren<IProps>) => {
     return (
         <div className={props.className ? "content " + props.className : "content"}>
-            {props.children}
+            <div className="container">
+                {props.children}
+            </div>
         </div>
     )
 }
